@@ -23,7 +23,6 @@ incdirs += include_directories('src')
 incdirs += include_directories('src/engine')
 incdirs += include_directories('subprojects')
 incdirs += include_directories('subprojects/tinygltf')
-incdirs += include_directories('subprojects/stduuid/include')
 
 srcs = [
   'src/main.cpp',
@@ -63,7 +62,6 @@ deps = [
   dependency('GL', required : true),
   dependency('assimp', required: true),
   dependency('fmt', required: true),
-  dependency('uuid', required: true),
   meson.get_compiler('cpp').find_library('dl'),
   meson.get_compiler('cpp').find_library('m'),
 ]

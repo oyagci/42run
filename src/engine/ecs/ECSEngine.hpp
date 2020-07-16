@@ -18,13 +18,13 @@ private:
 public:
 	struct Instance
 	{
-		uuids::uuid Uuid;
+		unsigned int Uuid;
 		EntityManagerHandle EntityManager;
 		SystemManagerHandle SystemManager;
 	};
 
 private:
-	std::unordered_map<uuids::uuid, Instance> _Instances;
+	std::unordered_map<unsigned int, Instance> _Instances;
 
 	EntityManagerHandle _EntityManager;
 	SystemManagerHandle _SystemManager;
@@ -51,7 +51,7 @@ public:
 
 	auto CreateInstance() -> Instance*
 	{
-		uuids::uuid instanceUuid(uuids::uuid_system_generator{}());
+		unsigned int instanceUuid(g_NextUuid++);
 
 		_Instances[instanceUuid].Uuid = instanceUuid;
 		_Instances[instanceUuid].EntityManager = std::make_unique<EntityManager>();
@@ -60,7 +60,7 @@ public:
 		return &_Instances[instanceUuid];
 	}
 
-	auto RemoveInstance(uuids::uuid uuid)
+	auto RemoveInstance(unsigned int uuid)
 	{
 		auto instance = _Instances.find(uuid);
 		if (instance != _Instances.end()) {

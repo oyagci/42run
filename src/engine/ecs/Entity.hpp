@@ -9,9 +9,10 @@
 #include "Component.hpp"
 #include <iostream>
 #include <tuple>
-#include "uuid.h"
 
 namespace ecs {
+
+static unsigned int g_NextUuid = 0;
 
 typedef std::type_index TypeIndex;
 
@@ -95,12 +96,12 @@ protected:
 	std::unordered_map<TypeIndex, std::unique_ptr<IComponentBase>> Components;
 	std::string Name;
 	unsigned int Id;
-	uuids::uuid Uuid;
+	unsigned int Uuid;
 
 	static unsigned int NextEntityID;
 
 public:
-	IEntityBase() : Name("Unnamed Entity"), Id(NextEntityID++), Uuid(uuids::uuid_system_generator{}())
+	IEntityBase() : Name("Unnamed Entity"), Id(NextEntityID++), Uuid(g_NextUuid++)
 	{
 	}
 
@@ -179,7 +180,7 @@ public:
 		return Id;
 	}
 
-	uuids::uuid const &GetUuid() const
+	unsigned int const &GetUuid() const
 	{
 		return Uuid;
 	}
