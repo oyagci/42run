@@ -59,7 +59,6 @@ deps = [
   dependency('glfw3', required : true),
   dependency('threads', required : true),
   dependency('GL', required : true),
-  dependency('assimp', required: true),
   dependency('fmt', required: true),
   meson.get_compiler('cpp').find_library('dl'),
   meson.get_compiler('cpp').find_library('m'),
