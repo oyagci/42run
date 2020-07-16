@@ -4,18 +4,22 @@ set(NAME LazyGL)
 project(${NAME})
 
 set(CMAKE_CXX_STANDARD 17)
+set(OpenGL_GL_PREFERENCE GLVND)
 
 find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
+find_package(glfw3 REQUIRED)
+find_package(glm REQUIRED)
 
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-add_subdirectory(dependencies/glfw)
-
-set(BUILD_UTILS OFF CACHE BOOL "" FORCE)
-set(BUILD_FRAMEWORK ON CACHE BOOL "" FORCE)
-set(CMAKE_INSTALL_PREFIX "/Library/Frameworks")
-add_subdirectory(dependencies/glew/build/cmake)
+#set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+#set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+#set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+#add_subdirectory(dependencies/glfw)
+#
+#set(BUILD_UTILS OFF CACHE BOOL "" FORCE)
+#set(BUILD_FRAMEWORK ON CACHE BOOL "" FORCE)
+#set(CMAKE_INSTALL_PREFIX "/Library/Frameworks")
+#add_subdirectory(dependencies/glew/build/cmake)
 
 file(GLOB_RECURSE SOURCES sources/*)
 file(GLOB_RECURSE HEADERS includes/*)
@@ -49,10 +53,10 @@ endif()
 
 set(INCLUDES
 	sources/
-	includes/
-	dependencies/glew/include
-	dependencies/glfw/include
-	dependencies/glm/)
+	includes/)
+#	dependencies/glew/include
+#	dependencies/glfw/include
+#	dependencies/glm/)
 
 target_link_libraries(${NAME} ${LIBRARIES})
 target_include_directories(${NAME} PUBLIC ${INCLUDES})

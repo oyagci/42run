@@ -55,7 +55,7 @@ cmake = import('cmake')
 lazyGL = cmake.subproject('LazyGL')
 
 deps = [
-  lazyGL.dependency('LazyGL', required: true),
+  lazyGL.dependency('LazyGL'),
   dependency('glew', required : true),
   dependency('glfw3', required : true),
   dependency('threads', required : true),
