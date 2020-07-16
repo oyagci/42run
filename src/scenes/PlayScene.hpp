@@ -441,7 +441,11 @@ public:
 		}
 		else if (_State == SceneState::Paused) {
 
+			engine::Engine::Instance().GetDisplay()->showCursor(true);
+
 			if (kbd.getKeyDown(GLFW_KEY_ESCAPE)) {
+
+				engine::Engine::Instance().GetDisplay()->showCursor(false);
 				_State = SceneState::Playing;
 			}
 		}
