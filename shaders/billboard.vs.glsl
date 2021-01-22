@@ -1,4 +1,4 @@
-#version 450 core
+#version 330 core
 
 layout (location = 0) in vec3 in_position;
 layout (location = 2) in vec2 in_tex_coord;
@@ -12,8 +12,8 @@ out vec2 TexCoords;
 
 void main()
 {
-	vec3 cameraRight = { viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0] };
-	vec3 cameraUp = { viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1] };
+	vec3 cameraRight = vec3(viewMatrix[0][0], viewMatrix[1][0], viewMatrix[2][0]);
+	vec3 cameraUp = vec3(viewMatrix[0][1], viewMatrix[1][1], viewMatrix[2][1]);
 
 	vec3 vertexPos = particlePosition
 					 + cameraRight * in_position.x * 3.0

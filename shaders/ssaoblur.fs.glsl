@@ -1,4 +1,4 @@
-#version 450 core
+#version 330 core
 
 out float frag_color;
 

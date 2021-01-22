@@ -1,4 +1,4 @@
-#version 450 core
+#version 330 core
 
 out float frag_color;
 
@@ -12,7 +12,7 @@ uniform mat4 projectionMatrix;
 uniform vec3 samples[64];
 
 const float noiseSize = 4.0;
-const vec2 screenSize = { 1920.0, 1080.0 };
+const vec2 screenSize = vec2(1920.0, 1080.0);
 const vec2 noiseScale = vec2(screenSize.x / noiseSize, screenSize.y / noiseSize);
 
 const int kernelSize = 64;

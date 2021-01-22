@@ -1,23 +1,12 @@
-#version 450 core
+#version 330 core
 
-vec2 quad[4] = {
-	{ -1.0, -1.0 },
-	{  1.0, -1.0 },
-	{  1.0,  1.0 },
-	{ -1.0,  1.0 },
-};
-
-vec2 texCoords[4] = {
-	{ 0.0, 0.0 },
-	{ 1.0, 0.0 },
-	{ 1.0, 1.0 },
-	{ 0.0, 1.0 },
-};
+layout (location = 0) in vec3 in_position;
+layout (location = 2) in vec2 uv_coords;
 
 out vec2 TexCoords;
 
 void main()
 {
-	gl_Position = vec4(quad[gl_VertexID], 0.0, 1.0);
-	TexCoords = texCoords[gl_VertexID];
+	gl_Position = vec4(in_position, 1.0);
+	TexCoords = uv_coords;
 }
